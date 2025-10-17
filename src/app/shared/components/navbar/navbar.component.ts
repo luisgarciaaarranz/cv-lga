@@ -1,20 +1,39 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ScrollService } from 'src/app/core/services/scroll.service';
+import { TranslationService, Translations } from 'src/app/core/services/translation.service';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-navbar',
   templateUrl: './navbar.component.html',
   styleUrls: ['./navbar.component.scss']
 })
-export class NavbarComponent implements OnInit {
+export class NavbarComponent implements OnInit, OnDestroy {
   activeSection: string = 'home';
+  currentLanguage: 'es' | 'en' = 'es';
+  translations!: Translations;
+  private languageSubscription!: Subscription;
 
-  constructor(private scroll: ScrollService, private router: Router) {}
+  constructor(
+    private scroll: ScrollService, 
+    private router: Router,
+    private translationService: TranslationService
+  ) {}
 
   ngOnInit(): void {
     this.scrollToInitialSection();
     window.addEventListener('scroll', this.onScroll.bind(this));
+    
+    // Initialize translations
+    this.translations = this.translationService.getTranslations();
+    this.currentLanguage = this.translationService.getCurrentLanguage();
+    
+    // Subscribe to language changes
+    this.languageSubscription = this.translationService.currentLanguage$.subscribe(language => {
+      this.currentLanguage = language;
+      this.translations = this.translationService.getTranslations();
+    });
   }
 
   scrollTo(section: string): void {
@@ -40,6 +59,17 @@ export class NavbarComponent implements OnInit {
           history.replaceState(null, '', `/${section}`);
         }
       }
+    }
+  }
+
+  toggleLanguage(): void {
+    const newLanguage = this.currentLanguage === 'es' ? 'en' : 'es';
+    this.translationService.setLanguage(newLanguage);
+  }
+
+  ngOnDestroy(): void {
+    if (this.languageSubscription) {
+      this.languageSubscription.unsubscribe();
     }
   }
 

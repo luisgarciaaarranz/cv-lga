@@ -12,7 +12,7 @@ img {
   height: 5rem;
   border-radius: 50px;
   margin-right: 1.5rem;
-  border-color: #28a745;
+  border-color: #1a365d;
   border: 1px;
 }
 
@@ -22,16 +22,41 @@ img {
 
 .navbar-nav .nav-link.active {
   font-weight: bold;
-  color: #28a745 !important; /* Color verde */
-  border-bottom: 2px solid #28a745;
+  color: #1a365d !important; /* Color azul marino */
+  border-bottom: 2px solid #1a365d;
 }
 
-.btn-outline-success.active {
-  background-color: #28a745;
+.btn-outline-primary.active {
+  background-color: #1a365d;
   color: white;
-  border: 2px solid #28a745;
+  border: 2px solid #1a365d;
 }
 
 .navbar-brand {
   cursor: pointer !important;
+}
+
+.navbar-nav {
+  gap: 1.5rem;
+  align-items: center;
+}
+
+.language-switcher {
+  margin-left: 1rem;
+  
+  .language-btn {
+    border-radius: 20px;
+    font-weight: 600;
+    padding: 0.3rem 0.8rem;
+    border-color: #1a365d;
+    color: #1a365d;
+    transition: all 0.3s ease;
+    
+    &:hover {
+      background-color: #1a365d;
+      color: white;
+      border-color: #1a365d;
+      transform: translateY(-1px);
+    }
+  }
 }

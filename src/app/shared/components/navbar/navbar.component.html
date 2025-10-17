@@ -12,10 +12,15 @@
 
     <div class="collapse navbar-collapse justify-content-end" id="navbarNavAltMarkup">
       <div class="navbar-nav">
-        <a class="nav-item nav-link" (click)="scrollTo('about')" [class.active]="activeSection === 'about'">Sobre mí</a>
-        <a class="nav-item nav-link" (click)="scrollTo('experience')" [class.active]="activeSection === 'experience'">Experiencia laboral</a>
+        <a class="nav-item nav-link" (click)="scrollTo('about')" [class.active]="activeSection === 'about'">{{ translations.aboutMe }}</a>
+        <a class="nav-item nav-link" (click)="scrollTo('experience')" [class.active]="activeSection === 'experience'">{{ translations.experience }}</a>
        <!--  <a class="nav-item nav-link" (click)="scrollTo('projects')" [class.active]="activeSection === 'projects'">Proyectos</a> -->
-        <button class="btn btn-outline-success" (click)="scrollTo('contact')" [class.active]="activeSection === 'contact'" type="button">Contáctame</button>
+        <button class="btn btn-outline-primary" (click)="scrollTo('contact')" [class.active]="activeSection === 'contact'" type="button">{{ translations.contactMe }}</button>
+        <div class="language-switcher">
+          <button class="btn btn-sm btn-outline-secondary language-btn" (click)="toggleLanguage()" type="button">
+            {{ currentLanguage === 'es' ? 'EN' : 'ES' }}
+          </button>
+        </div>
       </div>
     </div>
   </div>

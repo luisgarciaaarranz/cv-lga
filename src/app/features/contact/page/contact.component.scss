@@ -1,26 +1,86 @@
 @import url(./../../../app.component.scss);
 
-span{
-    display: block;
+.contact-title {
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: #1a365d;
+  margin-bottom: 3rem;
+  position: relative;
+  
+  &::after {
+    content: '';
+    position: absolute;
+    bottom: -10px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 60px;
+    height: 4px;
+    background: linear-gradient(135deg, #1a365d 0%, #3182ce 100%);
+    border-radius: 2px;
+  }
+}
+
+.contact-form {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 2rem;
+  background: rgba(255, 255, 255, 0.9);
+  border-radius: 15px;
+  box-shadow: 0 10px 30px rgba(26, 54, 93, 0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  
+  &:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 20px 40px rgba(26, 54, 93, 0.15);
+  }
 }
 
 mat-label {
-    display: block;
-    font-size: 1rem;
-    letter-spacing: 1px;
-    font-weight: 700;
-    margin-bottom: 1rem;
-    display: block;
-    text-align: left;
+  display: block;
+  font-size: 1rem;
+  letter-spacing: 1px;
+  font-weight: 600;
+  margin-bottom: 0.8rem;
+  color: #2d3748;
 }
 
-
-
-.contact-element {
-    margin-top: 14px;
+.full-width {
+  width: 100%;
 }
 
+.btn-send {
+  padding: 0.8rem 2.5rem;
+  font-size: 1.1rem;
+  font-weight: 600;
+  border-radius: 25px;
+  background: linear-gradient(135deg, #1a365d 0%, #3182ce 100%);
+  border: none;
+  color: white;
+  transition: all 0.3s ease;
+  
+  &:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(26, 54, 93, 0.3);
+    background: linear-gradient(135deg, #2c5282 0%, #4299e1 100%);
+  }
+  
+  &:active {
+    transform: translateY(0);
+  }
+}
 
-mat-form-field {
-    width: 100%;
+// Animaciones de entrada
+.contact-form {
+  animation: slideInUp 0.8s ease-out;
+}
+
+@keyframes slideInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }

@@ -2,23 +2,13 @@
     <div class="row">
         <div class="col-5">
                 <div class="d-flex justify-content-center">
-                    <strong>Sobre mí</strong>
-
+                    <h2 class="section-title">{{ translations.aboutTitle }}</h2>
                 </div>
                 <div class="text-about">
-                    <p>
-                        Desarrollador Web especializado en Angular ⚙️, me apasiona transformar ideas en experiencias digitales que realmente importan. 
-                        Con una sólida base en el desarrollo frontend, tengo experiencia en la creación de aplicaciones escalables, seguras y orientadas al usuario, 
-                        siempre utilizando las mejores prácticas de la industria y adaptándome a las últimas innovaciones de Angular 🚀.
-                        
-                    </p>
-                    <p>
-                        💡 Me destaco por mi enfoque en la eficiencia y la colaboración, siempre buscando maneras de optimizar tanto el rendimiento de las aplicaciones como los procesos de trabajo en equipo. 
-                        Además de mis habilidades técnicas, valoro el aprendizaje continuo 📚 y me esfuerzo por mantenerme actualizado, lo que me permite aportar soluciones innovadoras a cada proyecto.
-                    </p>
-                    <p>
-                        🔗 Comprometido con aportar soluciones efectivas y creativas, disfruto colaborando en proyectos desafiantes que impulsen el crecimiento y la innovación. Si buscas intercambiar ideas sobre desarrollo o explorar nuevas oportunidades en Angular, ¡me encantaría conectar!
-                    </p>
+                    <p>{{ translations.aboutText1 }}</p>
+                    <p>{{ translations.aboutText2 }}</p>
+                    <p>{{ translations.aboutText3 }}</p>
+                    <p>{{ translations.aboutText4 }}</p>
                 </div>
                     
                     
@@ -26,7 +16,7 @@
         <div class="col-2"></div>
         <div class="col-5">
             <h3 class="skills-title">
-                Mis habilidades
+                {{ translations.skillsTitle }}
             </h3>
            <div class="skills">
                 @for(skill of skillsList; track $index) {

@@ -1,46 +1,56 @@
 <div class="content">
- <div class="row d-flex justify-content-center">
-    
-      <div class="col-12">
-          <h1 class="d-flex justify-content-center">¿Hablamos?</h1>
-        
+  <div class="row d-flex justify-content-center">
+    <div class="col-12">
+      <h1 class="contact-title">{{ translations.contactTitle }}</h1>
+    </div>
+  </div>    
+  
+  <div class="contact-form">
+    <div class="row">
+      <div class="col-12 col-md-6 mb-3">
+        <mat-label>{{ translations.name }}</mat-label>
+        <mat-form-field appearance="outline" class="full-width">
+          <input
+            matInput
+            [placeholder]="translations.namePlaceholder"
+            required
+          />
+        </mat-form-field>
       </div>
-    </div>    
-    <div class="col-12 mt-4">
-        <mat-label>Nombre* </mat-label>
-        <mat-form-field>
-            <input
-              matInput
-              required
-            />
-          </mat-form-field>
+      
+      <div class="col-12 col-md-6 mb-3">
+        <mat-label>{{ translations.email }}</mat-label>
+        <mat-form-field appearance="outline" class="full-width">
+          <input
+            matInput
+            [formControl]="email"
+            [placeholder]="translations.emailPlaceholder"
+            (blur)="updateErrorMessage()"
+            required
+          />
+          @if (email.invalid) {
+            <mat-error>{{ getErrorMessage() }}</mat-error>
+          }
+        </mat-form-field>
+      </div>
+      
+      <div class="col-12 mb-4">
+        <mat-label>{{ translations.message }}</mat-label>
+        <mat-form-field appearance="outline" class="full-width">
+          <textarea 
+            matInput 
+            [placeholder]="translations.messagePlaceholder"
+            rows="5">
+          </textarea>
+        </mat-form-field>
+      </div>
+      
+      <div class="col-12 text-center">
+        <button class="btn btn-primary btn-send">
+          <i class="fas fa-paper-plane me-2"></i>
+          {{ translations.sendMessage }}
+        </button>
+      </div>
     </div>
-    <div class="col-12 contact-element mt-2" >
-        <mat-label>Email* </mat-label>
-        <mat-form-field>
-            <input
-              matInput
-              [formControl]="email"
-              (blur)="updateErrorMessage()"
-              required
-            />
-            @if (email.invalid) {
-              <mat-error>{{errorMessage()}}</mat-error>
-            }
-          </mat-form-field>
-    </div>
-    <div class="col-12 mt-2">
-        <mat-label>Mensaje</mat-label>
-        <mat-form-field >
-            <textarea matInput placeholder=""></textarea>
-          </mat-form-field>
-    </div>
-    <div class="d-flex justify-content-center">
-      <button class="btn btn-success">Enviar Mensaje</button>
   </div>
-</div> 
-
-   
-
-
-
+</div>
